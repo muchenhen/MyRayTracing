@@ -4,9 +4,4 @@ F:\MyRayTracing\eigen\Eigen\src\Core\arch\Default\BFloat16.h(1,1): warning C4819
 F:\MyRayTracing\MyRayTracing\OneWeekend\OneWeekend.cpp(34,25): warning C4244: “参数”: 从“double”转换到“const float”，可能丢失数据
 F:\MyRayTracing\MyRayTracing\OneWeekend\OneWeekend.cpp(35,26): warning C4244: “参数”: 从“double”转换到“const float”，可能丢失数据
 F:\MyRayTracing\MyRayTracing\OneWeekend\OneWeekend.cpp(36,79): warning C4244: “参数”: 从“double”转换到“const float”，可能丢失数据
-  color.cpp
-F:\MyRayTracing\eigen\Eigen\src\Core\arch\Default\Half.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-F:\MyRayTracing\eigen\Eigen\src\Core\arch\Default\BFloat16.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-F:\MyRayTracing\MyRayTracing\OneWeekend\color.cpp(15,79): warning C4305: “参数”: 从“double”到“const float”截断
-  正在生成代码...
   OneWeekend.vcxproj -> F:\MyRayTracing\MyRayTracing\Debug\OneWeekend.exe

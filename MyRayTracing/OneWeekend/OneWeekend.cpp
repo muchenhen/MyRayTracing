@@ -43,8 +43,8 @@ int main()
 		for (int i = 0; i < image_width; ++i) 
 		{
 			Eigen::Vector3f pixel_color;
-			auto u = double(i) / (image_width - 1);
-			auto v = double(j) / (image_height - 1);
+			auto u = double(i) / (double(image_width) - 1);
+			auto v = double(j) / (double(image_height) - 1);
 			Ray r(origin, lower_left_corner + u * horizontal + v * vertical - origin);
 			pixel_color = color::ray_color(r);
 			color::write_color(outfile, pixel_color);
