@@ -20,7 +20,7 @@ vec3 Ray::direction()
 	return dir;
 }
 
-point3 Ray::at(double t)
+point3 Ray::at(double t) const
 {
 	return orig + t * dir;
 }

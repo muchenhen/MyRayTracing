@@ -16,6 +16,6 @@ public:
 
 	static Eigen::Vector3f ray_color(const Ray& r);
 
-	static bool hit_sphere(const point3& center, double radius, const Ray& r);
+	static double hit_sphere(const point3& center, double radius, const Ray& r);
 };
 
