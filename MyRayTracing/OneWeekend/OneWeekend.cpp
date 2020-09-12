@@ -4,6 +4,10 @@
 #include <Eigen/Eigen>
 #include "color.h"
 #include "Ray.h"
+#include "HittableList.h"
+#include "Sphere.h"
+#include "rtUtility.h"
+
 using namespace std;
 
 int main()
@@ -24,6 +28,11 @@ int main()
 	{
 		cout << "open file failed" << endl;
 	}
+
+	//World
+	HittableList world;
+	world.add(make_shared<Sphere>(point3(0, 0, -1), 0.5));
+	world.add(make_shared<Sphere>(point3(0, -100.5, -1), 100));
 
 	//Camera
 	auto viewport_height = 2.0;
@@ -46,7 +55,7 @@ int main()
 			auto u = double(i) / (double(image_width) - 1);
 			auto v = double(j) / (double(image_height) - 1);
 			Ray r(origin, lower_left_corner + u * horizontal + v * vertical - origin);
-			pixel_color = color::ray_color(r);
+			pixel_color = color::RayColor(r, world);
 			color::write_color(outfile, pixel_color);
 		}
 	}

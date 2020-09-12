@@ -1,4 +1,7 @@
 #include "color.h"
+#include "HittableList.h"
+#include "sphere.h"
+#include "rtUtility.h"
 #include <math.h>
 
 void color::write_color(ofstream& outfile, Eigen::Vector3f pixel_color)
@@ -24,6 +27,18 @@ Eigen::Vector3f color::ray_color(const Ray& r)
 	unit_direction = unit_direction.normalized();
 	t = 0.5 * (unit_direction[1] + 1.0);
 	return (1.0 - t) * Eigen::Vector3f(1.0, 1.0, 1.0) + t * Eigen::Vector3f(0.5, 0.7, 1.0);
+}
+
+Eigen::Vector3f color::RayColor(const Ray& r, const Hittable& world)
+{
+	hitRecord record;
+	if (world.hit(r, 0, infinity, record))
+	{
+		return 0.5 * (record.normal + Eigen::Vector3f(1.0, 1.0, 1.0));
+	}
+	vec3 unitDirection = r.dir.normalized();
+	auto t = 0.5 * (unitDirection[2] + 1.0);
+	return (1.0 - t) * vec3(1.0, 1.0, 1.0) + t * vec3(0.5, 0.7, 1.0);
 }
 
 //ÅÐ¶ÏÇòÊÇ·ñ±»»÷ÖÐ
