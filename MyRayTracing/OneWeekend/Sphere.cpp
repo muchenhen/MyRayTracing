@@ -29,8 +29,9 @@ bool Sphere::hit(const Ray& r, double t_min, double t_max, hitRecord& record) co
 		{
 			record.t = temp;
 			record.p = r.at(record.t);
-			vec3 outwardNormal = (record.p - center) / radius;
-			record.setFaceNormal(r, outwardNormal);
+			vec3 outwardNormal = (record.p - center) / radius;//击中记录的点 减去 球心点 结果除以 球半径，
+															  //可以得到一个向外的法线方向
+			record.setFaceNormal(r, outwardNormal);//光线与法线进行判断
 			return true;
 		}
 
