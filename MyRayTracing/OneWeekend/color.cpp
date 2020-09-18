@@ -4,11 +4,23 @@
 #include "rtUtility.h"
 #include <math.h>
 
-void color::write_color(ofstream& outfile, Eigen::Vector3f pixel_color)
+void color::write_color(ofstream& outfile, Eigen::Vector3f pixel_color, int samplePerPixel)
 {
-	outfile << static_cast<int>(255.999 * pixel_color[0]) << ' '
-		<< static_cast<int>(255.999 * pixel_color[1]) << ' '
-		<< static_cast<int>(255.999 * pixel_color[2]) << '\n';
+	auto r = pixel_color[0];
+	auto g = pixel_color[1];
+	auto b = pixel_color[2];
+
+	//用颜色除以采样系数
+	auto scale = 1.0 / samplePerPixel;
+	r *= scale;
+	g *= scale;
+	b *= scale;
+
+	//rgb转换到0~255并写入到文件
+
+	outfile << translateColor(r) << ' '
+		<< translateColor(g) << ' '
+		<< translateColor(b) << '\n';
 }
 
 Eigen::Vector3f color::ray_color(const Ray& r)
