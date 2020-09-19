@@ -35,6 +35,16 @@ inline double randomDouble(double min, double max)
 	return min + (max - min) * randomDouble();
 }
 
+inline vec3 random()
+{
+	return vec3(randomDouble(), randomDouble(), randomDouble());
+}
+
+inline vec3 random(double min, double max)
+{
+	return vec3(randomDouble(min, max), randomDouble(min, max), randomDouble(min, max));
+}
+
 inline double clamp(double x, double min, double max)
 {
 	if (x < min)
@@ -51,4 +61,17 @@ inline double clamp(double x, double min, double max)
 inline int translateColor(double x)
 {
 	return static_cast<int>(256 * clamp(x, 0.0, 0.999));
+}
+
+inline vec3 randomInHitUintSphere()
+{
+	while (true)
+	{
+		auto p = random(-1, 1);
+		if (p.size() * p.size() >= 1)
+		{
+			continue;
+		}
+		return p;
+	}
 }

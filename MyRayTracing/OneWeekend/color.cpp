@@ -41,12 +41,20 @@ Eigen::Vector3f color::ray_color(const Ray& r)
 	return (1.0 - t) * Eigen::Vector3f(1.0, 1.0, 1.0) + t * Eigen::Vector3f(0.5, 0.7, 1.0);
 }
 
-Eigen::Vector3f color::RayColor(const Ray& r, const Hittable& world)
+Eigen::Vector3f color::RayColor(const Ray& r, const Hittable& world, int depth)
 {
 	hitRecord record;
+	if (depth <= 0)
+	{
+		return Eigen::Vector3f(0, 0, 0);
+	}
+
 	if (world.hit(r, 0, infinity, record))
 	{
-		return 0.5 * (record.normal + Eigen::Vector3f(1.0, 1.0, 1.0));
+		point3 target = record.p + record.normal + randomInHitUintSphere();//击中点位置 + 集中点法线 = 随机范围单位球的秋心位置；
+		//球心位置 + 随机偏移（限制在-1 ，1；因为要限制在单位球之内） = 作为漫反射光线的终点坐标
+
+		return 0.5 * RayColor(Ray(record.p, target - record.p), world, depth-1);
 	}
 	vec3 unitDirection = r.dir.normalized();
 	auto t = 0.5 * (unitDirection[2] + 1.0);

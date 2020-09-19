@@ -15,9 +15,10 @@ int main()
 {
 	// Image
 	const auto aspect_ratio = 16.0 / 9.0;
-	const int image_width = 800;
+	const int image_width = 400;
 	const int image_height = static_cast<int>(image_width / aspect_ratio);
 	const int samplesPerPixel = 100;
+	const int maxDepth = 10;
 
 	// Open File
 	ofstream outfile;
@@ -57,7 +58,7 @@ int main()
 				u = clamp(u, 0.0, 1.0);
 				v = clamp(v, 0.0, 1.0);
 				Ray ray = camera.getRay(u,v);
-				pixel_color += color::RayColor(ray, world);
+				pixel_color += color::RayColor(ray, world, maxDepth);
 			}
 			color::write_color(outfile, pixel_color, samplesPerPixel);
 			counti++;
