@@ -46,7 +46,7 @@ inline vec3 random(double min, double max)
 	return vec3(randomDouble(min, max), randomDouble(min, max), randomDouble(min, max));
 }
 
-inline vec3 randomUnitVector()
+inline vec3 randomUnitVector()//兰伯特漫反射模型
 {
 	auto a = randomDouble(0, 2 * PI);
 	auto z = randomDouble(-1, 1);
@@ -72,7 +72,7 @@ inline int translateColor(double x)
 	return static_cast<int>(256 * clamp(x, 0.0, 0.999));
 }
 
-inline vec3 randomInHitUintSphere()
+inline vec3 randomInHitUintSphere()//普通击中点单位球内随机反射方向
 {
 	while (true)
 	{
@@ -82,5 +82,18 @@ inline vec3 randomInHitUintSphere()
 			continue;
 		}
 		return p;
+	}
+}
+
+inline vec3 randomInHemisphere(const vec3& normal)//另一种漫反射模型
+{
+	vec3 inUnitSphere = randomInHitUintSphere();
+	if (inUnitSphere.dot(normal) > 0.0)
+	{
+		return inUnitSphere;
+	}
+	else
+	{
+		return -inUnitSphere;
 	}
 }

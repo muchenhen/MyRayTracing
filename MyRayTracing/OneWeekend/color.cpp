@@ -52,7 +52,9 @@ Eigen::Vector3f color::RayColor(const Ray& r, const Hittable& world, int depth)
 
 	if (world.hit(r, 0.001, infinity, record))
 	{
-		point3 target = record.p + record.normal + randomUnitVector();//击中点位置 + 集中点法线 = 随机范围单位球的秋心位置；
+		point3 target = record.p + randomInHemisphere(record.normal);//击中点位置 + 击中点法线 = 随机范围单位球的秋心位置；
+		/*已经更改为兰伯特模型*/
+		/*又改成了另一种漫反射模型*/
 		//球心位置 + 随机偏移（限制在-1 ，1；因为要限制在单位球之内） = 作为漫反射光线的终点坐标
 
 		return 0.5 * RayColor(Ray(record.p, target - record.p), world, depth-1);

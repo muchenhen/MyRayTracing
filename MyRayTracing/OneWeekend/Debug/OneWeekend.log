@@ -42,6 +42,6 @@ F:\MyRayTracing\MyRayTracing\OneWeekend\color.cpp(17,10): warning C4244: “=”
 F:\MyRayTracing\MyRayTracing\OneWeekend\color.cpp(18,10): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
 F:\MyRayTracing\MyRayTracing\OneWeekend\color.cpp(35,41): warning C4305: “参数”: 从“double”到“const float”截断
 F:\MyRayTracing\MyRayTracing\OneWeekend\color.cpp(42,87): warning C4305: “参数”: 从“double”到“const float”截断
-F:\MyRayTracing\MyRayTracing\OneWeekend\color.cpp(62,65): warning C4305: “参数”: 从“double”到“const float”截断
+F:\MyRayTracing\MyRayTracing\OneWeekend\color.cpp(64,65): warning C4305: “参数”: 从“double”到“const float”截断
   正在生成代码...
   OneWeekend.vcxproj -> F:\MyRayTracing\MyRayTracing\Debug\OneWeekend.exe
