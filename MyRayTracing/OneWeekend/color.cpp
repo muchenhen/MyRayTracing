@@ -12,9 +12,10 @@ void color::write_color(ofstream& outfile, Eigen::Vector3f pixel_color, int samp
 
 	//用颜色除以采样系数
 	auto scale = 1.0 / samplePerPixel;
-	r *= scale;
-	g *= scale;
-	b *= scale;
+	//gamma矫正 Gamma2 直接开方
+	r = sqrt(r * scale);
+	g = sqrt(g * scale);
+	b = sqrt(b * scale);
 
 	//rgb转换到0~255并写入到文件
 
