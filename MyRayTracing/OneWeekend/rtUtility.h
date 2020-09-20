@@ -46,6 +46,14 @@ inline vec3 random(double min, double max)
 	return vec3(randomDouble(min, max), randomDouble(min, max), randomDouble(min, max));
 }
 
+inline vec3 randomUnitVector()
+{
+	auto a = randomDouble(0, 2 * PI);
+	auto z = randomDouble(-1, 1);
+	auto r = sqrt(1 - z * z);
+	return vec3(r * cos(a), r * sin(a), z);
+}
+
 inline double clamp(double x, double min, double max)
 {
 	if (x < min)
