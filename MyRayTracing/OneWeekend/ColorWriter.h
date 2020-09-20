@@ -7,11 +7,12 @@
 #include "Hittable.h"
 using namespace std;
 using point3 = Eigen::Vector3f;
+using color3 = Eigen::Vector3f;
 
-class color
+class ColorWriter
 {
 public:
-	Eigen::Vector3f pixel_color;
+	color3 pixel_color;
 
 	static void write_color(ofstream& outfile, Eigen::Vector3f pixel_color, int samplePerPixel);
 

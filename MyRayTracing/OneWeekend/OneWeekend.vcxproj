@@ -141,7 +141,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />
-    <ClCompile Include="color.cpp" />
+    <ClCompile Include="ColorWriter.cpp" />
     <ClCompile Include="Hittable.cpp" />
     <ClCompile Include="HittableList.cpp" />
     <ClCompile Include="OneWeekend.cpp" />
@@ -150,7 +150,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
-    <ClInclude Include="color.h" />
+    <ClInclude Include="ColorWriter.h" />
     <ClInclude Include="Hittable.h" />
     <ClInclude Include="HittableList.h" />
     <ClInclude Include="Ray.h" />

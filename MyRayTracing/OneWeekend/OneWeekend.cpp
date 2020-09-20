@@ -2,7 +2,7 @@
 #include <fstream>
 #include <ostream>
 #include <Eigen/Eigen>
-#include "color.h"
+#include "ColorWriter.h"
 #include "Ray.h"
 #include "HittableList.h"
 #include "Sphere.h"
@@ -58,9 +58,9 @@ int main()
 				u = clamp(u, 0.0, 1.0);
 				v = clamp(v, 0.0, 1.0);
 				Ray ray = camera.getRay(u,v);
-				pixel_color += color::RayColor(ray, world, maxDepth);
+				pixel_color += ColorWriter::RayColor(ray, world, maxDepth);
 			}
-			color::write_color(outfile, pixel_color, samplesPerPixel);
+			ColorWriter::write_color(outfile, pixel_color, samplesPerPixel);
 			counti++;
 		}
 	}
