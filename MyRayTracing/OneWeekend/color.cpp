@@ -50,7 +50,7 @@ Eigen::Vector3f color::RayColor(const Ray& r, const Hittable& world, int depth)
 		return Eigen::Vector3f(0, 0, 0);
 	}
 
-	if (world.hit(r, 0, infinity, record))
+	if (world.hit(r, 0.001, infinity, record))
 	{
 		point3 target = record.p + record.normal + randomInHitUintSphere();//击中点位置 + 集中点法线 = 随机范围单位球的秋心位置；
 		//球心位置 + 随机偏移（限制在-1 ，1；因为要限制在单位球之内） = 作为漫反射光线的终点坐标
