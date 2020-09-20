@@ -7,6 +7,7 @@
 #include <limits>
 #include <memory>
 #include <random>
+#include <iostream>
 #include "Ray.h"
 
 using std::shared_ptr;
@@ -68,7 +69,7 @@ inline vec3 randomInHitUintSphere()
 	while (true)
 	{
 		auto p = random(-1, 1);
-		if (p.size() * p.size() >= 1)
+		if (p.squaredNorm() >= 1)
 		{
 			continue;
 		}
