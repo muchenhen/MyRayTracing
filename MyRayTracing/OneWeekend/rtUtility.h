@@ -9,6 +9,8 @@
 #include <random>
 #include <iostream>
 #include "Ray.h"
+using point3 = Eigen::Vector3f;
+using color3 = Eigen::Vector3f;
 
 using std::shared_ptr;
 using std::make_shared;
@@ -96,4 +98,9 @@ inline vec3 randomInHemisphere(const vec3& normal)//另一种漫反射模型
 	{
 		return -inUnitSphere;
 	}
+}
+
+inline vec3 reflect(const vec3& v, const vec3& n)
+{
+	return v - 2 * v.dot(n) * n;
 }

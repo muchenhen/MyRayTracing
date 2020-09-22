@@ -25,7 +25,7 @@ void ColorWriter::write_color(ofstream& outfile, Eigen::Vector3f pixel_color, in
 		<< translateColor(b) << '\n';
 }
 
-Eigen::Vector3f ColorWriter::ray_color(const Ray& r)
+color3 ColorWriter::ray_color(const Ray& r)
 {
 	//击中球的时候走这里着色
 	auto t = hit_sphere(point3(0, 0, -1), 0.5, r);
@@ -33,22 +33,22 @@ Eigen::Vector3f ColorWriter::ray_color(const Ray& r)
 	{
 		vec3 N = (r.at(t) - vec3(0, 0, -1));
 		N = N.normalized();
-		N = (N + Eigen::Vector3f(0.5, 0.7, 1.0)) * 0.5;
+		N = (N + color3 (0.5, 0.7, 1.0)) * 0.5;
 		return N;
 	}
 	//没有击中球的时候按照原本的背景计算颜色
 	vec3 unit_direction = r.dir;
 	unit_direction = unit_direction.normalized();
 	t = 0.5 * (unit_direction[1] + 1.0);
-	return (1.0 - t) * Eigen::Vector3f(1.0, 1.0, 1.0) + t * Eigen::Vector3f(0.5, 0.7, 1.0);
+	return (1.0 - t) * color3(1.0, 1.0, 1.0) + t * color3(0.5, 0.7, 1.0);
 }
 
-Eigen::Vector3f ColorWriter::RayColor(const Ray& r, const Hittable& world, int depth)
+color3 ColorWriter::RayColor(const Ray& r, const Hittable& world, int depth)
 {
 	hitRecord record;
 	if (depth <= 0)
 	{
-		return Eigen::Vector3f(0, 0, 0);
+		return color3(0, 0, 0);
 	}
 
 	if (world.hit(r, 0.001, infinity, record))
@@ -60,6 +60,36 @@ Eigen::Vector3f ColorWriter::RayColor(const Ray& r, const Hittable& world, int d
 
 		return 0.5 * RayColor(Ray(record.p, target - record.p), world, depth - 1);
 	}
+	vec3 unitDirection = r.dir.normalized();
+	auto t = 0.5 * (unitDirection[2] + 1.0);
+	return (1.0 - t) * vec3(1.0, 1.0, 1.0) + t * vec3(0.5, 0.7, 1.0);
+}
+
+color3 ColorWriter::RayColor2(const Ray& r, const Hittable& world, int depth)
+{
+	hitRecord record;
+
+	if (depth <= 0)
+	{
+		return color3(0, 0, 0);
+	}
+
+	if (world.hit(r, 0.001, infinity, record))
+	{
+		Ray scattered;
+		color3 attenuation;
+		if (record.materialPtr->scatter(r, record, attenuation, scattered))
+		{
+			//cout << RayColor2(scattered, world, depth - 1);
+			//return attenuation.cross(RayColor2(scattered, world, depth - 1));
+			return  RayColor2(scattered, world, depth - 1);
+		}
+		else
+		{
+			return color3(0, 0, 0);
+		}
+	}
+
 	vec3 unitDirection = r.dir.normalized();
 	auto t = 0.5 * (unitDirection[2] + 1.0);
 	return (1.0 - t) * vec3(1.0, 1.0, 1.0) + t * vec3(0.5, 0.7, 1.0);
