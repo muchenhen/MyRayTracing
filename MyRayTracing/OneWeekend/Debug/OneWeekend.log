@@ -1,6 +1,7 @@
 ﻿  ColorWriter.cpp
 F:\MyRayTracing\eigen\Eigen\src\Core\arch\Default\Half.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
 F:\MyRayTracing\eigen\Eigen\src\Core\arch\Default\BFloat16.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+<<<<<<< HEAD
 F:\MyRayTracing\MyRayTracing\OneWeekend\rtUtility.h(43,58): warning C4244: “参数”: 从“double”转换到“const float”，可能丢失数据
 F:\MyRayTracing\MyRayTracing\OneWeekend\rtUtility.h(43,42): warning C4244: “参数”: 从“double”转换到“const float”，可能丢失数据
 F:\MyRayTracing\MyRayTracing\OneWeekend\rtUtility.h(43,26): warning C4244: “参数”: 从“double”转换到“const float”，可能丢失数据
@@ -57,5 +58,49 @@ F:\MyRayTracing\MyRayTracing\OneWeekend\OneWeekend.cpp(47,68): warning C4305: �
 F:\MyRayTracing\MyRayTracing\OneWeekend\OneWeekend.cpp(48,68): warning C4305: “参数”: 从“double”到“const float”截断
 F:\MyRayTracing\MyRayTracing\OneWeekend\OneWeekend.cpp(49,61): warning C4305: “参数”: 从“double”到“const float”截断
 F:\MyRayTracing\MyRayTracing\OneWeekend\OneWeekend.cpp(50,62): warning C4305: “参数”: 从“double”到“const float”截断
+=======
+F:\MyRayTracing\MyRayTracing\OneWeekend\rtUtility.h(41,58): warning C4244: “参数”: 从“double”转换到“const float”，可能丢失数据
+F:\MyRayTracing\MyRayTracing\OneWeekend\rtUtility.h(41,42): warning C4244: “参数”: 从“double”转换到“const float”，可能丢失数据
+F:\MyRayTracing\MyRayTracing\OneWeekend\rtUtility.h(41,26): warning C4244: “参数”: 从“double”转换到“const float”，可能丢失数据
+F:\MyRayTracing\MyRayTracing\OneWeekend\rtUtility.h(46,74): warning C4244: “参数”: 从“double”转换到“const float”，可能丢失数据
+F:\MyRayTracing\MyRayTracing\OneWeekend\rtUtility.h(46,50): warning C4244: “参数”: 从“double”转换到“const float”，可能丢失数据
+F:\MyRayTracing\MyRayTracing\OneWeekend\rtUtility.h(46,26): warning C4244: “参数”: 从“double”转换到“const float”，可能丢失数据
+F:\MyRayTracing\MyRayTracing\OneWeekend\rtUtility.h(54,38): warning C4244: “参数”: 从“double”转换到“const float”，可能丢失数据
+F:\MyRayTracing\MyRayTracing\OneWeekend\rtUtility.h(54,28): warning C4244: “参数”: 从“double”转换到“const float”，可能丢失数据
+F:\MyRayTracing\MyRayTracing\OneWeekend\rtUtility.h(54,16): warning C4244: “参数”: 从“double”转换到“const float”，可能丢失数据
+F:\MyRayTracing\MyRayTracing\OneWeekend\Camera.cpp(11,20): warning C4244: “参数”: 从“double”转换到“const float”，可能丢失数据
+F:\MyRayTracing\MyRayTracing\OneWeekend\Camera.cpp(12,23): warning C4244: “参数”: 从“double”转换到“const float”，可能丢失数据
+F:\MyRayTracing\MyRayTracing\OneWeekend\Camera.cpp(13,72): warning C4244: “参数”: 从“double”转换到“const float”，可能丢失数据
+  OneWeekend.cpp
+F:\MyRayTracing\eigen\Eigen\src\Core\arch\Default\Half.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+F:\MyRayTracing\eigen\Eigen\src\Core\arch\Default\BFloat16.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+F:\MyRayTracing\MyRayTracing\OneWeekend\rtUtility.h(41,58): warning C4244: “参数”: 从“double”转换到“const float”，可能丢失数据
+F:\MyRayTracing\MyRayTracing\OneWeekend\rtUtility.h(41,42): warning C4244: “参数”: 从“double”转换到“const float”，可能丢失数据
+F:\MyRayTracing\MyRayTracing\OneWeekend\rtUtility.h(41,26): warning C4244: “参数”: 从“double”转换到“const float”，可能丢失数据
+F:\MyRayTracing\MyRayTracing\OneWeekend\rtUtility.h(46,74): warning C4244: “参数”: 从“double”转换到“const float”，可能丢失数据
+F:\MyRayTracing\MyRayTracing\OneWeekend\rtUtility.h(46,50): warning C4244: “参数”: 从“double”转换到“const float”，可能丢失数据
+F:\MyRayTracing\MyRayTracing\OneWeekend\rtUtility.h(46,26): warning C4244: “参数”: 从“double”转换到“const float”，可能丢失数据
+F:\MyRayTracing\MyRayTracing\OneWeekend\rtUtility.h(54,38): warning C4244: “参数”: 从“double”转换到“const float”，可能丢失数据
+F:\MyRayTracing\MyRayTracing\OneWeekend\rtUtility.h(54,28): warning C4244: “参数”: 从“double”转换到“const float”，可能丢失数据
+F:\MyRayTracing\MyRayTracing\OneWeekend\rtUtility.h(54,16): warning C4244: “参数”: 从“double”转换到“const float”，可能丢失数据
+  color.cpp
+F:\MyRayTracing\eigen\Eigen\src\Core\arch\Default\Half.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+F:\MyRayTracing\eigen\Eigen\src\Core\arch\Default\BFloat16.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+F:\MyRayTracing\MyRayTracing\OneWeekend\rtUtility.h(41,58): warning C4244: “参数”: 从“double”转换到“const float”，可能丢失数据
+F:\MyRayTracing\MyRayTracing\OneWeekend\rtUtility.h(41,42): warning C4244: “参数”: 从“double”转换到“const float”，可能丢失数据
+F:\MyRayTracing\MyRayTracing\OneWeekend\rtUtility.h(41,26): warning C4244: “参数”: 从“double”转换到“const float”，可能丢失数据
+F:\MyRayTracing\MyRayTracing\OneWeekend\rtUtility.h(46,74): warning C4244: “参数”: 从“double”转换到“const float”，可能丢失数据
+F:\MyRayTracing\MyRayTracing\OneWeekend\rtUtility.h(46,50): warning C4244: “参数”: 从“double”转换到“const float”，可能丢失数据
+F:\MyRayTracing\MyRayTracing\OneWeekend\rtUtility.h(46,26): warning C4244: “参数”: 从“double”转换到“const float”，可能丢失数据
+F:\MyRayTracing\MyRayTracing\OneWeekend\rtUtility.h(54,38): warning C4244: “参数”: 从“double”转换到“const float”，可能丢失数据
+F:\MyRayTracing\MyRayTracing\OneWeekend\rtUtility.h(54,28): warning C4244: “参数”: 从“double”转换到“const float”，可能丢失数据
+F:\MyRayTracing\MyRayTracing\OneWeekend\rtUtility.h(54,16): warning C4244: “参数”: 从“double”转换到“const float”，可能丢失数据
+F:\MyRayTracing\MyRayTracing\OneWeekend\color.cpp(16,10): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+F:\MyRayTracing\MyRayTracing\OneWeekend\color.cpp(17,10): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+F:\MyRayTracing\MyRayTracing\OneWeekend\color.cpp(18,10): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+F:\MyRayTracing\MyRayTracing\OneWeekend\color.cpp(35,41): warning C4305: “参数”: 从“double”到“const float”截断
+F:\MyRayTracing\MyRayTracing\OneWeekend\color.cpp(42,87): warning C4305: “参数”: 从“double”到“const float”截断
+F:\MyRayTracing\MyRayTracing\OneWeekend\color.cpp(64,65): warning C4305: “参数”: 从“double”到“const float”截断
+>>>>>>> parent of 3f5adbc... 4.65
   正在生成代码...
   OneWeekend.vcxproj -> F:\MyRayTracing\MyRayTracing\Debug\OneWeekend.exe

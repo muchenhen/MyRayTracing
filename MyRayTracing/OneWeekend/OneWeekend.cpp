@@ -2,7 +2,7 @@
 #include <fstream>
 #include <ostream>
 #include <Eigen/Eigen>
-#include "ColorWriter.h"
+#include "color.h"
 #include "Ray.h"
 #include "HittableList.h"
 #include "Sphere.h"
@@ -72,9 +72,13 @@ int main()
 				u = clamp(u, 0.0, 1.0);
 				v = clamp(v, 0.0, 1.0);
 				Ray ray = camera.getRay(u,v);
+<<<<<<< HEAD
 				pixel_color += ColorWriter::RayColor2(ray, world, maxDepth);
+=======
+				pixel_color += color::RayColor(ray, world, maxDepth);
+>>>>>>> parent of 3f5adbc... 4.65
 			}
-			ColorWriter::write_color(outfile, pixel_color, samplesPerPixel);
+			color::write_color(outfile, pixel_color, samplesPerPixel);
 			counti++;
 		}
 	}

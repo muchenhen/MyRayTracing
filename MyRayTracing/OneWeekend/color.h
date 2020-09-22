@@ -10,12 +10,16 @@
 #include "Hittable.h"
 #include "rtUtility.h"
 using namespace std;
+<<<<<<< HEAD:MyRayTracing/OneWeekend/ColorWriter.h
 
+=======
+using point3 = Eigen::Vector3f;
+>>>>>>> parent of 3f5adbc... 4.65:MyRayTracing/OneWeekend/color.h
 
-class ColorWriter
+class color
 {
 public:
-	color3 pixel_color;
+	Eigen::Vector3f pixel_color;
 
 	static void write_color(ofstream& outfile, Eigen::Vector3f pixel_color, int samplePerPixel);
 

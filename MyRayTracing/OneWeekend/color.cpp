@@ -1,11 +1,10 @@
-#include <math.h>
-#include "ColorWriter.h"
+#include "color.h"
 #include "HittableList.h"
 #include "sphere.h"
 #include "rtUtility.h"
+#include <math.h>
 
-
-void ColorWriter::write_color(ofstream& outfile, Eigen::Vector3f pixel_color, int samplePerPixel)
+void color::write_color(ofstream& outfile, Eigen::Vector3f pixel_color, int samplePerPixel)
 {
 	auto r = pixel_color[0];
 	auto g = pixel_color[1];
@@ -25,7 +24,11 @@ void ColorWriter::write_color(ofstream& outfile, Eigen::Vector3f pixel_color, in
 		<< translateColor(b) << '\n';
 }
 
+<<<<<<< HEAD:MyRayTracing/OneWeekend/ColorWriter.cpp
 color3 ColorWriter::ray_color(const Ray& r)
+=======
+Eigen::Vector3f color::ray_color(const Ray& r)
+>>>>>>> parent of 3f5adbc... 4.65:MyRayTracing/OneWeekend/color.cpp
 {
 	//击中球的时候走这里着色
 	auto t = hit_sphere(point3(0, 0, -1), 0.5, r);
@@ -43,7 +46,11 @@ color3 ColorWriter::ray_color(const Ray& r)
 	return (1.0 - t) * color3(1.0, 1.0, 1.0) + t * color3(0.5, 0.7, 1.0);
 }
 
+<<<<<<< HEAD:MyRayTracing/OneWeekend/ColorWriter.cpp
 color3 ColorWriter::RayColor(const Ray& r, const Hittable& world, int depth)
+=======
+Eigen::Vector3f color::RayColor(const Ray& r, const Hittable& world, int depth)
+>>>>>>> parent of 3f5adbc... 4.65:MyRayTracing/OneWeekend/color.cpp
 {
 	hitRecord record;
 	if (depth <= 0)
@@ -58,7 +65,7 @@ color3 ColorWriter::RayColor(const Ray& r, const Hittable& world, int depth)
 		/*又改成了另一种漫反射模型*/
 		//球心位置 + 随机偏移（限制在-1 ，1；因为要限制在单位球之内） = 作为漫反射光线的终点坐标
 
-		return 0.5 * RayColor(Ray(record.p, target - record.p), world, depth - 1);
+		return 0.5 * RayColor(Ray(record.p, target - record.p), world, depth-1);
 	}
 	vec3 unitDirection = r.dir.normalized();
 	auto t = 0.5 * (unitDirection[2] + 1.0);
@@ -96,7 +103,7 @@ color3 ColorWriter::RayColor2(const Ray& r, const Hittable& world, int depth)
 }
 
 //判断球是否被击中
-double ColorWriter::hit_sphere(const point3& center, double radius, const Ray& r)
+double color::hit_sphere(const point3& center, double radius, const Ray& r)
 {
 	vec3 oc = r.orig - center;
 	double a = double(r.dir.dot(r.dir));

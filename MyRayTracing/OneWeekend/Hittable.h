@@ -1,12 +1,14 @@
 #pragma once
-#include "rtUtility.h"
 #include "Ray.h"
 /*
 这个类记录的是击中点，就是光线扫描时和球面相交的点，这些点一定在球面上
 */
+<<<<<<< HEAD
 
 class Material;
 
+=======
+>>>>>>> parent of 3f5adbc... 4.65
  struct hitRecord
 {
 	point3 p;//点的位置
