@@ -161,6 +161,7 @@
     <ClInclude Include="Ray.h" />
     <ClInclude Include="rtUtility.h" />
     <ClInclude Include="Sphere.h" />
+    <ClInclude Include="testmaterial.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

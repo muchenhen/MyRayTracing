@@ -6,12 +6,13 @@
 */
 
 class Material;
+class material;
 
  struct hitRecord
 {
 	point3 p;//点的位置
 	vec3 normal;//该点的法线
-	shared_ptr<Material> materialPtr;
+	shared_ptr<material> materialPtr;
 	double t;//击中该点的光线的参数t的值
 
 	bool front_face;//是否是朝向外面的法线

@@ -11,6 +11,7 @@
 #include "Material.h"
 #include "Lambertian.h"
 #include "Metal.h"
+#include "testmaterial.h"
 
 using namespace std;
 
@@ -20,7 +21,7 @@ int main()
 	const auto aspect_ratio = 16.0 / 9.0;
 	const int image_width = 400;
 	const int image_height = static_cast<int>(image_width / aspect_ratio);
-	const int samplesPerPixel = 1;//多重采样次数
+	const int samplesPerPixel = 10;//多重采样次数
 	const int maxDepth = 10;//限制光线着色函数递归次数
 
 	// Open File
@@ -44,10 +45,10 @@ int main()
 	Camera camera;
 
 	//Materials
-	auto materialGround = make_shared<Lambertian>(color3(0.8, 0.8, 0.0));
-	auto materialCenter = make_shared<Lambertian>(color3(0.7, 0.3, 0.3));
-	auto materialLeft = make_shared<Metal>(color3(0.8, 0.8, 0.8));
-	auto materialRight = make_shared<Metal>(color3(0.8, 0.6, 0.2));
+	auto materialGround = make_shared<lambertian>(color3(0.8, 0.8, 0.0));
+	auto materialCenter = make_shared<lambertian>(color3(0.7, 0.3, 0.3));
+	auto materialLeft = make_shared<metal>(color3(0.8, 0.8, 0.8));
+	auto materialRight = make_shared<metal>(color3(0.8, 0.6, 0.2));
 
 	world.add(make_shared<Sphere>(point3( 0.0, -100.5, -1.0), 100.0, materialGround));
 	world.add(make_shared<Sphere>(point3( 0.0,	  0.0, -1.0),   0.5, materialCenter));
@@ -72,9 +73,9 @@ int main()
 				u = clamp(u, 0.0, 1.0);
 				v = clamp(v, 0.0, 1.0);
 				Ray ray = camera.getRay(u,v);
-				pixel_color += ColorWriter::RayColor2(ray, world, maxDepth);
+				pixel_color += ColorWriter::RayColor3(ray, world, maxDepth);
 			}
-			ColorWriter::write_color(outfile, pixel_color, samplesPerPixel);
+			ColorWriter::WriteColor(outfile, pixel_color, samplesPerPixel);
 			counti++;
 		}
 	}
