@@ -58,3 +58,17 @@ Release
 *.vbproj.user
 ipch
 *sdf
+*.pdb
+*.tlog
+*.log
+*.db-wal
+*.pdb
+*.ilk
+MyRayTracing/.vs/MyRayTracing/v16/.suo
+*.db
+*.db-shm
+*.pdb
+MyRayTracing/OneWeekend/Debug/vc142.pdb
+MyRayTracing/OneWeekend/Debug/vc142.idb
+*.idb
+*.ilk
