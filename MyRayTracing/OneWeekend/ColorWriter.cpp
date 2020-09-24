@@ -5,7 +5,7 @@
 #include "rtUtility.h"
 
 
-void ColorWriter::write_color(ofstream& outfile, Eigen::Vector3f pixel_color, int samplePerPixel)
+void ColorWriter::WriteColor(ofstream& outfile, Eigen::Vector3f pixel_color, int samplePerPixel)
 {
 	auto r = pixel_color[0];
 	auto g = pixel_color[1];
@@ -28,7 +28,7 @@ void ColorWriter::write_color(ofstream& outfile, Eigen::Vector3f pixel_color, in
 color3 ColorWriter::ray_color(const Ray& r)
 {
 	//击中球的时候走这里着色
-	auto t = hit_sphere(point3(0, 0, -1), 0.5, r);
+	auto t = HitSphere(point3(0, 0, -1), 0.5, r);
 	if (t > 0.0)
 	{
 		vec3 N = (r.at(t) - vec3(0, 0, -1));
@@ -78,11 +78,9 @@ color3 ColorWriter::RayColor2(const Ray& r, const Hittable& world, int depth)
 	{
 		Ray scattered;
 		color3 attenuation;
-		if (record.materialPtr->scatter(r, record, attenuation, scattered))
+		if (record.materialPtr->Scatter(r, record, attenuation, scattered))
 		{
-			//cout << RayColor2(scattered, world, depth - 1);
-			//return attenuation.cross(RayColor2(scattered, world, depth - 1));
-			return  RayColor2(scattered, world, depth - 1);
+			return  vec3Mult(attenuation, ColorWriter::RayColor2(scattered, world, depth - 1));
 		}
 		else
 		{
@@ -90,13 +88,13 @@ color3 ColorWriter::RayColor2(const Ray& r, const Hittable& world, int depth)
 		}
 	}
 
-	vec3 unitDirection = r.dir.normalized();
+	vec3 unitDirection = vec3Unit(r.dir);
 	auto t = 0.5 * (unitDirection[2] + 1.0);
 	return (1.0 - t) * vec3(1.0, 1.0, 1.0) + t * vec3(0.5, 0.7, 1.0);
 }
 
 //判断球是否被击中
-double ColorWriter::hit_sphere(const point3& center, double radius, const Ray& r)
+double ColorWriter::HitSphere(const point3& center, double radius, const Ray& r)
 {
 	vec3 oc = r.orig - center;
 	double a = double(r.dir.dot(r.dir));

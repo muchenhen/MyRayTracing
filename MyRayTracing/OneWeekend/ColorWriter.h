@@ -17,7 +17,7 @@ class ColorWriter
 public:
 	color3 pixel_color;
 
-	static void write_color(ofstream& outfile, Eigen::Vector3f pixel_color, int samplePerPixel);
+	static void WriteColor(ofstream& outfile, Eigen::Vector3f pixel_color, int samplePerPixel);
 
 	static color3 ray_color(const Ray& r);
 
@@ -25,6 +25,6 @@ public:
 
 	static color3 RayColor2(const Ray& r, const Hittable& world, int depth);
 
-	static double hit_sphere(const point3& center, double radius, const Ray& r);
+	static double HitSphere(const point3& center, double radius, const Ray& r);
 };
 

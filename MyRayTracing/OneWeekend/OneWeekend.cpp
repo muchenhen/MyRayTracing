@@ -18,9 +18,9 @@ int main()
 {
 	// Image
 	const auto aspect_ratio = 16.0 / 9.0;
-	const int image_width = 400;
+	const int image_width = 1920;
 	const int image_height = static_cast<int>(image_width / aspect_ratio);
-	const int samplesPerPixel = 1;//多重采样次数
+	const int samplesPerPixel = 10;//多重采样次数
 	const int maxDepth = 10;//限制光线着色函数递归次数
 
 	// Open File
@@ -74,7 +74,7 @@ int main()
 				Ray ray = camera.getRay(u,v);
 				pixel_color += ColorWriter::RayColor2(ray, world, maxDepth);
 			}
-			ColorWriter::write_color(outfile, pixel_color, samplesPerPixel);
+			ColorWriter::WriteColor(outfile, pixel_color, samplesPerPixel);
 			counti++;
 		}
 	}

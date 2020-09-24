@@ -9,6 +9,7 @@
 #include <random>
 #include <iostream>
 #include "Ray.h"
+
 using point3 = Eigen::Vector3f;
 using color3 = Eigen::Vector3f;
 
@@ -18,8 +19,6 @@ using std::sqrt;
 
 const double infinity = std::numeric_limits<double>::infinity();//无穷大
 const double PI = 3.1415926535897932385;//圆周率
-
-
 
 inline double degreesToRadians(double degress)
 {
@@ -103,4 +102,14 @@ inline vec3 randomInHemisphere(const vec3& normal)//另一种漫反射模型
 inline vec3 reflect(const vec3& v, const vec3& n)
 {
 	return v - 2 * v.dot(n) * n;
+}
+
+inline vec3 vec3Mult(const vec3& v, const vec3& n)
+{
+	return vec3(v[0] * n[0], v[1] * n[1], v[2] * n[2]);
+}
+
+inline vec3 vec3Unit(const vec3& v)
+{
+	return vec3(v[0] / v.norm(), v[1] / v.norm(), v[2] / v.norm());
 }
