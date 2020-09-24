@@ -17,7 +17,7 @@ class ColorWriter
 public:
 	color3 pixel_color;
 
-	static void WriteColor(ofstream& outfile, Eigen::Vector3f pixel_color, int samplePerPixel);
+	static void WriteColor(ofstream& outfile, color3 pixel_color, int samplePerPixel);
 
 	static color3 ray_color(const Ray& r);
 

@@ -10,15 +10,15 @@
 #include <iostream>
 #include "Ray.h"
 
-using point3 = Eigen::Vector3f;
-using color3 = Eigen::Vector3f;
+using point3 = Eigen::Vector3d;
+using color3 = Eigen::Vector3d;
 
 using std::shared_ptr;
 using std::make_shared;
 using std::sqrt;
 
 const double infinity = std::numeric_limits<double>::infinity();//无穷大
-const double PI = 3.1415926535897932385;//圆周率
+const double PI = 3.14159265;//圆周率
 
 inline double degreesToRadians(double degress)
 {

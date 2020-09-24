@@ -5,7 +5,7 @@
 #include "rtUtility.h"
 
 
-void ColorWriter::WriteColor(ofstream& outfile, Eigen::Vector3f pixel_color, int samplePerPixel)
+void ColorWriter::WriteColor(ofstream& outfile, color3 pixel_color, int samplePerPixel)
 {
 	auto r = pixel_color[0];
 	auto g = pixel_color[1];

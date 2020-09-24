@@ -1,8 +1,8 @@
 #pragma once
 #include <Eigen/Eigen>
 
-using point3 = Eigen::Vector3f;
-using vec3 = Eigen::Vector3f;
+using point3 = Eigen::Vector3d;
+using vec3 = Eigen::Vector3d;
 
 class Ray
 {
