@@ -18,7 +18,7 @@ int main()
 {
 	// Image
 	const auto aspect_ratio = 16.0 / 9.0;
-	const int image_width = 1920;
+	const int image_width = 800;
 	const int image_height = static_cast<int>(image_width / aspect_ratio);
 	const int samplesPerPixel = 8;//多重采样次数
 	const int maxDepth = 10;//限制光线着色函数递归次数
@@ -46,8 +46,8 @@ int main()
 	//Materials
 	auto materialGround = make_shared<Lambertian>(color3(0.8, 0.8, 0.0));
 	auto materialCenter = make_shared<Lambertian>(color3(0.7, 0.3, 0.3));
-	auto materialLeft = make_shared<Metal>(color3(0.8, 0.8, 0.8));
-	auto materialRight = make_shared<Metal>(color3(0.8, 0.6, 0.2));
+	auto materialLeft = make_shared<Metal>(color3(0.8, 0.8, 0.8),0.3);
+	auto materialRight = make_shared<Metal>(color3(0.8, 0.6, 0.2),1.0);
 
 	world.add(make_shared<Sphere>(point3( 0.0, -100.5, -1.0), 100.0, materialGround));
 	world.add(make_shared<Sphere>(point3( 0.0,	  0.0, -1.0),   0.5, materialCenter));
