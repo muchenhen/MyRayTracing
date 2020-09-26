@@ -20,42 +20,42 @@ using std::sqrt;
 const double infinity = std::numeric_limits<double>::infinity();//无穷大
 const double PI = 3.14159265;//圆周率
 
-inline double degreesToRadians(double degress)
+inline double DegreesToRadians(double degress)
 {
 	return degress * PI / 180.0;
 }
 
-inline double randomDouble()
+inline double RandomDouble()
 {
 	static std::uniform_real_distribution<double> distribution(0.0, 1.0);
 	static std::mt19937 generator;
 	return distribution(generator);
 }
 
-inline double randomDouble(double min, double max)
+inline double RandomDouble(double min, double max)
 {
-	return min + (max - min) * randomDouble();
+	return min + (max - min) * RandomDouble();
 }
 
-inline vec3 random()
+inline vec3 Random()
 {
-	return vec3(randomDouble(), randomDouble(), randomDouble());
+	return vec3(RandomDouble(), RandomDouble(), RandomDouble());
 }
 
-inline vec3 random(double min, double max)
+inline vec3 Random(double min, double max)
 {
-	return vec3(randomDouble(min, max), randomDouble(min, max), randomDouble(min, max));
+	return vec3(RandomDouble(min, max), RandomDouble(min, max), RandomDouble(min, max));
 }
 
-inline vec3 randomUnitVector()//兰伯特漫反射模型
+inline vec3 RandomUnitVector()//兰伯特漫反射模型
 {
-	auto a = randomDouble(0, 2 * PI);
-	auto z = randomDouble(-1, 1);
+	auto a = RandomDouble(0, 2 * PI);
+	auto z = RandomDouble(-1, 1);
 	auto r = sqrt(1 - z * z);
 	return vec3(r * cos(a), r * sin(a), z);
 }
 
-inline double clamp(double x, double min, double max)
+inline double Clamp(double x, double min, double max)
 {
 	if (x < min)
 	{
@@ -68,16 +68,16 @@ inline double clamp(double x, double min, double max)
 	return x;
 }
 
-inline int translateColor(double x)
+inline int TranslateColor(double x)
 {
-	return static_cast<int>(256 * clamp(x, 0.0, 0.999));
+	return static_cast<int>(256 * Clamp(x, 0.0, 0.999));
 }
 
-inline vec3 randomInHitUintSphere()//普通击中点单位球内随机反射方向
+inline vec3 RandomInHitUintSphere()//普通击中点单位球内随机反射方向
 {
 	while (true)
 	{
-		auto p = random(-1, 1);
+		auto p = Random(-1, 1);
 		if (p.squaredNorm() >= 1)
 		{
 			continue;
@@ -86,9 +86,9 @@ inline vec3 randomInHitUintSphere()//普通击中点单位球内随机反射方向
 	}
 }
 
-inline vec3 randomInHemisphere(const vec3& normal)//另一种漫反射模型
+inline vec3 RandomInHemisphere(const vec3& normal)//另一种漫反射模型
 {
-	vec3 inUnitSphere = randomInHitUintSphere();
+	vec3 inUnitSphere = RandomInHitUintSphere();
 	if (inUnitSphere.dot(normal) > 0.0)
 	{
 		return inUnitSphere;
@@ -99,17 +99,27 @@ inline vec3 randomInHemisphere(const vec3& normal)//另一种漫反射模型
 	}
 }
 
-inline vec3 reflect(const vec3& v, const vec3& n)
+//光线反射
+inline vec3 Reflect(const vec3& v, const vec3& n)
 {
 	return v - 2 * v.dot(n) * n;
 }
 
-inline vec3 vec3Mult(const vec3& v, const vec3& n)
+//光线折射 斯涅尔折射定律
+inline vec3 Refract(const vec3& uv, const vec3& n, double etaiOverEtat)
+{
+	auto cosTheta = -uv.dot(n);
+	vec3 rOutPerp = etaiOverEtat * (uv + cosTheta * n);
+	vec3 rOutParallel = -sqrt(fabs(1.0 - rOutPerp.squaredNorm())) * n;
+	return rOutPerp + rOutParallel;
+}
+
+inline vec3 Vec3Mult(const vec3& v, const vec3& n)
 {
 	return vec3(v[0] * n[0], v[1] * n[1], v[2] * n[2]);
 }
 
-inline vec3 vec3Unit(const vec3& v)
+inline vec3 Vec3Unit(const vec3& v)
 {
 	return vec3(v[0] / v.norm(), v[1] / v.norm(), v[2] / v.norm());
 }

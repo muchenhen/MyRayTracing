@@ -142,6 +142,7 @@
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="ColorWriter.cpp" />
+    <ClCompile Include="Dielectric.cpp" />
     <ClCompile Include="Hittable.cpp" />
     <ClCompile Include="HittableList.cpp" />
     <ClCompile Include="Lambertian.cpp" />
@@ -153,6 +154,7 @@
   <ItemGroup>
     <ClInclude Include="Camera.h" />
     <ClInclude Include="ColorWriter.h" />
+    <ClInclude Include="Dielectric.h" />
     <ClInclude Include="Hittable.h" />
     <ClInclude Include="HittableList.h" />
     <ClInclude Include="Lambertian.h" />

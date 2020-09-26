@@ -13,10 +13,10 @@ Metal::Metal(const color3& a, double f)
 
 bool Metal::Scatter(const Ray& RayIn, const hitRecord& record, color3& attenuation, Ray& scattered) const
 {
-	vec3 reflected = reflect(RayIn.dir.normalized(), record.normal);
+	vec3 reflected = Reflect(RayIn.dir.normalized(), record.normal);
 	if (fuzz)
 	{
-		scattered = Ray(record.p, reflected + fuzz * randomInHitUintSphere());
+		scattered = Ray(record.p, reflected + fuzz * RandomInHitUintSphere());
 	}
 	else
 	{

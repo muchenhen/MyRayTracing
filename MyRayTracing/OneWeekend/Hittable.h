@@ -14,12 +14,12 @@ class Material;
 	shared_ptr<Material> materialPtr;
 	double t;//击中该点的光线的参数t的值
 
-	bool front_face;//是否是朝向外面的法线
+	bool frontFace;//是否是朝向外面的法线
 
 	inline void setFaceNormal(const Ray& r, const vec3& outwardNormal)
 	{
-		front_face = r.dir.dot(outwardNormal) < 0;
-		normal = front_face ? outwardNormal : -outwardNormal;
+		frontFace = r.dir.dot(outwardNormal) < 0;
+		normal = frontFace ? outwardNormal : -outwardNormal;
 	}
 };
 

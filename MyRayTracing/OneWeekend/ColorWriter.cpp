@@ -20,9 +20,9 @@ void ColorWriter::WriteColor(ofstream& outfile, color3 pixel_color, int samplePe
 
 	//rgb转换到0~255并写入到文件
 
-	outfile << translateColor(r) << ' '
-		<< translateColor(g) << ' '
-		<< translateColor(b) << '\n';
+	outfile << TranslateColor(r) << ' '
+		<< TranslateColor(g) << ' '
+		<< TranslateColor(b) << '\n';
 }
 
 color3 ColorWriter::ray_color(const Ray& r)
@@ -53,7 +53,7 @@ color3 ColorWriter::RayColor(const Ray& r, const Hittable& world, int depth)
 
 	if (world.hit(r, 0.001, infinity, record))
 	{
-		point3 target = record.p + randomInHemisphere(record.normal);//击中点位置 + 击中点法线 = 随机范围单位球的秋心位置；
+		point3 target = record.p + RandomInHemisphere(record.normal);//击中点位置 + 击中点法线 = 随机范围单位球的秋心位置；
 		/*已经更改为兰伯特模型*/
 		/*又改成了另一种漫反射模型*/
 		//球心位置 + 随机偏移（限制在-1 ，1；因为要限制在单位球之内） = 作为漫反射光线的终点坐标
@@ -80,7 +80,7 @@ color3 ColorWriter::RayColor2(const Ray& r, const Hittable& world, int depth)
 		color3 attenuation;
 		if (record.materialPtr->Scatter(r, record, attenuation, scattered))
 		{
-			return  vec3Mult(attenuation, ColorWriter::RayColor2(scattered, world, depth - 1));
+			return  Vec3Mult(attenuation, ColorWriter::RayColor2(scattered, world, depth - 1));
 		}
 		else
 		{
@@ -88,7 +88,7 @@ color3 ColorWriter::RayColor2(const Ray& r, const Hittable& world, int depth)
 		}
 	}
 
-	vec3 unitDirection = vec3Unit(r.dir);
+	vec3 unitDirection = Vec3Unit(r.dir);
 	auto t = 0.5 * (unitDirection[2] + 1.0);
 	return (1.0 - t) * vec3(1.0, 1.0, 1.0) + t * vec3(0.5, 0.7, 1.0);
 }
