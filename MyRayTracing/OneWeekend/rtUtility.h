@@ -49,9 +49,9 @@ inline vec3 Random(double min, double max)
 
 inline vec3 RandomUnitVector()//兰伯特漫反射模型
 {
-	auto a = RandomDouble(0, 2 * PI);
-	auto z = RandomDouble(-1, 1);
-	auto r = sqrt(1 - z * z);
+	auto a = RandomDouble(0, 2 * PI);//随机0到2PI的一个值
+	auto z = RandomDouble(-1, 1);//随机-1到1的一个值
+	auto r = sqrt(1 - z * z);//对 （（1 - 随机在-1到1的值） 的结果） 进行开方
 	return vec3(r * cos(a), r * sin(a), z);
 }
 
@@ -122,4 +122,11 @@ inline vec3 Vec3Mult(const vec3& v, const vec3& n)
 inline vec3 Vec3Unit(const vec3& v)
 {
 	return vec3(v[0] / v.norm(), v[1] / v.norm(), v[2] / v.norm());
+}
+
+inline double Schlick(double cosine, double refIdx)
+{
+	auto r0 = (1 - refIdx) / (1 + refIdx);
+	r0 *= r0;
+	return r0 + (1 - r0) * pow((1 - cosine), 5);
 }

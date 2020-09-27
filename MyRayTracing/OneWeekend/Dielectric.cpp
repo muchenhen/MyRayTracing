@@ -21,6 +21,15 @@ bool Dielectric::Scatter(const Ray& r_in, const hitRecord& rec, color3& attenuat
 		return true;
 	}
 
+	//Schlick Approximation
+	double reflectProb = Schlick(cosTheta, etaiOverEtat);
+	if (RandomDouble() < reflectProb)
+	{
+		vec3 reflected = Reflect(unitDirection, rec.normal);
+		scattered = Ray(rec.p, reflected);
+		return true;
+	}
+
 	vec3 refracted = Refract(unitDirection, rec.normal, etaiOverEtat);
 	scattered = Ray(rec.p, refracted);
 	return true;
