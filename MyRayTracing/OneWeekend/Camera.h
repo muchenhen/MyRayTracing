@@ -3,7 +3,7 @@
 class Camera
 {
 public:
-	Camera();
+	Camera(double vfov, double aspectRatio);
 
 	Ray getRay(double u, double v) const;
 

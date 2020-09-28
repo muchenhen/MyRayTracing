@@ -1,10 +1,15 @@
 #include "Camera.h"
 
-Camera::Camera()
+Camera::Camera(double vfov, double aspectRatio)
 {
-	double aspectRatio = 16.0 / 9.0;//宽高比
-	double viewportHeight = 2.0;//视口高度
-	double viewportWidth = aspectRatio * viewportHeight;//视口宽度
+	auto theta = DegreesToRadians(vfov);
+	auto h = tan(theta / 2);
+	auto viewportHeight = 2.0 * h;
+	auto viewportWidth = aspectRatio * viewportHeight;
+
+	//double aspectRatio = 16.0 / 9.0;//宽高比
+	double aspectRatioviewportHeight = 2.0;//视口高度
+	//double viewportWidth = aspectRatio * viewportHeight;//视口宽度
 	double focalLength = 1.0;//焦距 这里指摄像机和视口面片的距离
 
 	origin = point3(0, 0, 0);//光源位置
