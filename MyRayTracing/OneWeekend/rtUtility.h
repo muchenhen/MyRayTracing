@@ -130,3 +130,16 @@ inline double Schlick(double cosine, double refIdx)
 	r0 *= r0;
 	return r0 + (1 - r0) * pow((1 - cosine), 5);
 }
+
+inline vec3 RandomInUnitDisk()
+{
+	while (true)
+	{
+		auto p = vec3(RandomDouble(-1, 1), RandomDouble(-1, 1), 0);
+		if (p.squaredNorm() >= 1)
+		{
+			continue;
+		}
+		return p;
+	}
+}

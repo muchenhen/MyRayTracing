@@ -45,7 +45,13 @@ int main()
 	
 
 	//Camera
-	Camera camera(point3(-2, 2, 1), point3(0, 0, -1), vec3(0, 1, 0), 20, aspect_ratio);
+	point3 lookfrom(3, 3, 2);
+	point3 lookat(0, 0, -1);
+	vec3 vup(0, 1, 0);
+	auto dist_to_focus = (lookfrom - lookat).norm();
+	auto aperture = 2.0;
+
+	Camera camera(lookfrom, lookat, vup, 20, aspect_ratio, aperture, dist_to_focus);
 
 	//Materials
 	auto materialGround = make_shared<Lambertian>(color3(0.8, 0.8, 0.0));
@@ -79,7 +85,7 @@ int main()
 				auto v = (j + RandomDouble()) / (double(image_height) - 1);
 				u = Clamp(u, 0.0, 1.0);
 				v = Clamp(v, 0.0, 1.0);
-				Ray ray = camera.getRay(u,v);
+				Ray ray = camera.GetRay(u,v);
 				pixel_color += ColorWriter::RayColor2(ray, world, maxDepth);
 			}
 			ColorWriter::WriteColor(outfile, pixel_color, samplesPerPixel);
