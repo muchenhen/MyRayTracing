@@ -45,25 +45,25 @@ int main()
 	
 
 	//Camera
-	Camera camera(90, aspect_ratio);
+	Camera camera(point3(-2, 2, 1), point3(0, 0, -1), vec3(0, 1, 0), 90, aspect_ratio);
 
 	//Materials
-	/*auto materialGround = make_shared<Lambertian>(color3(0.8, 0.8, 0.0));
+	auto materialGround = make_shared<Lambertian>(color3(0.8, 0.8, 0.0));
 	auto materialCenter = make_shared<Lambertian>(color3(0.1, 0.2, 0.5));
 	auto materialLeft = make_shared<Dielectric>(1.5);
-	auto materialRight = make_shared<Metal>(color3(0.8, 0.6, 0.2),0.0);*/
+	auto materialRight = make_shared<Metal>(color3(0.8, 0.6, 0.2), 0.0);
 
-	auto materialLeft = make_shared<Lambertian>(color3(0, 0, 1));
-	auto materialRight = make_shared<Lambertian>(color3(1, 0, 0));
+	world.add(make_shared<Sphere>(point3(0.0, -100.5, -1.0), 100.0, materialGround));
+	world.add(make_shared<Sphere>(point3(0.0, 0.0, -1.0), 0.5, materialCenter));
+	world.add(make_shared<Sphere>(point3(-1.0, 0.0, -1.0), 0.5, materialLeft));
+	world.add(make_shared<Sphere>(point3(-1.0, 0.0, -1.0), -0.4, materialLeft));
+	world.add(make_shared<Sphere>(point3(1.0, 0.0, -1.0), 0.5, materialRight));
 
-	world.add(make_shared<Sphere>(point3(-R, 0, -1), R, materialLeft));
-	world.add(make_shared<Sphere>(point3( R, 0, -1), R, materialRight));
+	//auto materialLeft = make_shared<Lambertian>(color3(0, 0, 1));
+	//auto materialRight = make_shared<Lambertian>(color3(1, 0, 0));
 
-	//world.add(make_shared<Sphere>(point3( 0.0, -100.5, -1.0), 100.0, materialGround));
-	//world.add(make_shared<Sphere>(point3( 0.0,	  0.0, -1.0),   0.5, materialCenter));
-	//world.add(make_shared<Sphere>(point3(-1.0,    0.0, -1.0),   0.5, materialLeft));
-	//world.add(make_shared<Sphere>(point3(-1.0,    0.0, -1.0),  -0.4, materialLeft));
-	//world.add(make_shared<Sphere>(point3( 1.0,    0.0, -1.0),   0.5, materialRight));
+	//world.add(make_shared<Sphere>(point3(-R, 0, -1), R, materialLeft));
+	//world.add(make_shared<Sphere>(point3( R, 0, -1), R, materialRight));
 
 	// Render
 	outfile << "P3\n" << image_width << ' ' << image_height << "\n255\n";
