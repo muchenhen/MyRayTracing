@@ -10,17 +10,17 @@ Ray::Ray(const point3& origen, const vec3& direction)
 	dir = direction;
 }
 
-point3 Ray::origen()
+point3 Ray::GetOrigenPoint()
 {
 	return orig;
 }
 
-vec3 Ray::direction()
+vec3 Ray::GetDirection()
 {
 	return dir;
 }
 
-point3 Ray::at(double t) const
+point3 Ray::GetAtPoint(double t) const
 {
 	return orig + t * dir;
 }

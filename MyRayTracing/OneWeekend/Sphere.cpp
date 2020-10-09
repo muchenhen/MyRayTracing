@@ -35,7 +35,7 @@ bool Sphere::hit(const Ray& r, double t_min, double t_max, hitRecord& record) co
 		if (temp < t_max && temp > t_min)//解是否在参数范围内
 		{
 			record.t = temp;
-			record.p = r.at(record.t);
+			record.p = r.GetAtPoint(record.t);
 			vec3 outwardNormal = (record.p - center) / radius;//击中记录的点 减去 球心点 结果除以 球半径，
 															  //可以得到一个向外的法线方向
 			record.setFaceNormal(r, outwardNormal);//光线与法线进行判断
@@ -50,7 +50,7 @@ bool Sphere::hit(const Ray& r, double t_min, double t_max, hitRecord& record) co
 		if (temp < t_max && temp > t_min)//
 		{
 			record.t = temp;
-			record.p = r.at(record.t);
+			record.p = r.GetAtPoint(record.t);
 			vec3 outwardNormal = (record.p - center) / radius;
 			record.setFaceNormal(r, outwardNormal);
 			if (materialPtr)

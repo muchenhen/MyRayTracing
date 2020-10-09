@@ -31,7 +31,7 @@ color3 ColorWriter::ray_color(const Ray& r)
 	auto t = HitSphere(point3(0, 0, -1), 0.5, r);
 	if (t > 0.0)
 	{
-		vec3 N = (r.at(t) - vec3(0, 0, -1));
+		vec3 N = (r.GetAtPoint(t) - vec3(0, 0, -1));
 		N = N.normalized();
 		N = (N + color3 (0.5, 0.7, 1.0)) * 0.5;
 		return N;
